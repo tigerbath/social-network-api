@@ -40,3 +40,6 @@ UserSchema.virtual("friendCount").get(function () {
     0
   );
 });
+
+// export the User model
+module.exports = User;
