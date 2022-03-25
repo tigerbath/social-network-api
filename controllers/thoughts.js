@@ -46,8 +46,30 @@ const createThought = async (req, res) => {
   }
 };
 
+// update a thought
+
+const updateThoughtById = async (req, res) => {
+  try {
+    const { thoughtId } = req.params;
+    const data = req.body;
+
+    const updateThought = await Thought.findByIdAndUpdate(thoughtId, data);
+
+    if (!updateThought) {
+      return res.json({ success: false, message: "Thought does not exist" });
+    }
+
+    return res.json({ success: true, data: updateThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
+};
 module.exports = {
   getThoughts,
   getThoughtById,
   createThought,
+  updateThoughtById,
 };
