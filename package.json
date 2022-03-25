@@ -6,8 +6,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "seed": "node src/schema/index.js",
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
