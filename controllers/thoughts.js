@@ -16,6 +16,22 @@ const getThoughts = async (req, res) => {
   }
 };
 
+// get thought by ID
+
+const getThoughtById = async (req, res) => {
+  try {
+    const { thoughtId } = req.params;
+    const thought = await Thought.findById(thoughtId);
+    return res.json({ success: true, data: thought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get Thought" });
+  }
+};
+
 module.exports = {
   getThoughts,
+  getThoughtById,
 };
