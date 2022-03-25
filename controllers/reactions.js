@@ -18,6 +18,26 @@ const addNewReactionToThought = async (req, res) => {
       .json({ success: false, error: "Failed to create reaction" });
   }
 };
+
+const removeReactionFromThought = async (req, res) => {
+  try {
+    const { thoughtId, reactionId } = req.params;
+
+    console.log(thoughtId, reactionId);
+
+    const reaction = await Thought.findByIdAndUpdate(thoughtId, {
+      $pull: { reactions: { _id: reactionId } },
+    });
+
+    return res.json({ success: true, data: reaction });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete reaction | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete reaction" });
+  }
+};
 module.exports = {
   addNewReactionToThought,
+  removeReactionFromThought,
 };
