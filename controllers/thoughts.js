@@ -31,7 +31,23 @@ const getThoughtById = async (req, res) => {
   }
 };
 
+// create a thought
+
+const createThought = async (req, res) => {
+  try {
+    const { thoughtText, username } = req.body;
+    const newThought = await Thought.create({ thoughtText, username });
+    return res.json({ success: true, data: newThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
+};
+
 module.exports = {
   getThoughts,
   getThoughtById,
+  createThought,
 };
