@@ -64,9 +64,25 @@ const updateUserById = async (req, res) => {
 
 // delete user
 
+const deleteUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const deleteUser = await User.findByIdAndDelete(userId);
+
+    return res.json({ success: true, data: deleteUser });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create User | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create User" });
+  }
+};
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   updateUserById,
+  deleteUserById,
 };
