@@ -1,6 +1,22 @@
 {
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Social Network API",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tigerbath/social-network-api.git"
+  },
+  "homepage": "https://github.com/tigerbath/social-network-api#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "moment": "^2.29.1",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15"
