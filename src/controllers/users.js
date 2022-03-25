@@ -46,10 +46,27 @@ const createUser = async (req, res) => {
 
 // update user
 
+const updateUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const data = req.body;
+
+    const updateUser = await User.findOneAndUpdate(userId, data);
+
+    return res.json({ success: true, data: updateUser });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create User | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create User" });
+  }
+};
+
 // delete user
 
 module.exports = {
   getUsers,
   getUserById,
   createUser,
+  updateUserById,
 };
