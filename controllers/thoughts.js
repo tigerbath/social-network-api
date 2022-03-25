@@ -67,9 +67,32 @@ const updateThoughtById = async (req, res) => {
       .json({ success: false, error: "Failed to create Thought" });
   }
 };
+
+// delete a thought
+
+const deleteThoughtById = async (req, res) => {
+  try {
+    const { thoughtId } = req.params;
+
+    const deleteThought = await Thought.findByIdAndDelete(thoughtId);
+
+    if (!deleteThought) {
+      return res.json({ success: false, message: "Thought does not exist" });
+    }
+
+    return res.json({ success: true, data: deleteThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
+};
+
 module.exports = {
   getThoughts,
   getThoughtById,
   createThought,
   updateThoughtById,
+  deleteThoughtById,
 };
