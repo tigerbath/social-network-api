@@ -1,7 +1,3 @@
-const { Thought } = require("../models");
-
-// get all thoughts
-
 const { Thought } = require("../../models");
 
 const getThoughts = async (req, res) => {
@@ -16,8 +12,6 @@ const getThoughts = async (req, res) => {
   }
 };
 
-// get thought by ID
-
 const getThoughtById = async (req, res) => {
   try {
     const { thoughtId } = req.params;
@@ -31,8 +25,6 @@ const getThoughtById = async (req, res) => {
   }
 };
 
-// create a thought
-
 const createThought = async (req, res) => {
   try {
     const { thoughtText, username } = req.body;
@@ -45,8 +37,6 @@ const createThought = async (req, res) => {
       .json({ success: false, error: "Failed to create Thought" });
   }
 };
-
-// update a thought
 
 const updateThoughtById = async (req, res) => {
   try {
@@ -67,8 +57,6 @@ const updateThoughtById = async (req, res) => {
       .json({ success: false, error: "Failed to create Thought" });
   }
 };
-
-// delete a thought
 
 const deleteThoughtById = async (req, res) => {
   try {

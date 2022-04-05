@@ -1,7 +1,5 @@
 const { User } = require("../../models");
 
-// get users
-
 const getUsers = async (req, res) => {
   try {
     const users = await User.find({});
@@ -13,8 +11,6 @@ const getUsers = async (req, res) => {
       .json({ success: false, error: "Failed to get Users" });
   }
 };
-
-// get user by id
 
 const getUserById = async (req, res) => {
   try {
@@ -29,8 +25,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-// create user
-
 const createUser = async (req, res) => {
   try {
     const { username, email } = req.body;
@@ -43,8 +37,6 @@ const createUser = async (req, res) => {
       .json({ success: false, error: "Failed to create User" });
   }
 };
-
-// update user
 
 const updateUserById = async (req, res) => {
   try {
@@ -61,8 +53,6 @@ const updateUserById = async (req, res) => {
       .json({ success: false, error: "Failed to create User" });
   }
 };
-
-// delete user
 
 const deleteUserById = async (req, res) => {
   try {

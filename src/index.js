@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const routes = require("./routes");
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 const app = express();
 
@@ -21,7 +21,7 @@ const init = async () => {
     console.log("[INFO]: Database connection successful");
 
     app.listen(PORT, () =>
-      console.log(`🌍🚀🌍🚀 Connected on localhost:${PORT}`)
+      console.log(`Server running on http://localhost:${PORT}`)
     );
   } catch (error) {
     console.log(`[ERROR]: Database connection failed | ${error.message}`);
